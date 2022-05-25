@@ -1,0 +1,714 @@
+{
+    "check_type": "dockerfile",
+    "results": {
+        "passed_checks": [
+            {
+                "check_id": "CKV_DOCKER_1",
+                "bc_check_id": "BC_DKR_1",
+                "check_name": "Ensure port 22 is not exposed",
+                "check_result": {
+                    "result": "PASSED",
+                    "results_configuration": null
+                },
+                "code_block": [
+                    [
+                        1,
+                        "FROM docker.io/eclipse-temurin:17-jdk-focal\n"
+                    ],
+                    [
+                        2,
+                        "\n"
+                    ],
+                    [
+                        3,
+                        "RUN useradd -ms /bin/bash webgoat\n"
+                    ],
+                    [
+                        4,
+                        "RUN chgrp -R 0 /home/webgoat\n"
+                    ],
+                    [
+                        5,
+                        "RUN chmod -R g=u /home/webgoat\n"
+                    ],
+                    [
+                        6,
+                        "\n"
+                    ],
+                    [
+                        7,
+                        "USER webgoat\n"
+                    ],
+                    [
+                        8,
+                        "\n"
+                    ],
+                    [
+                        9,
+                        "COPY --chown=webgoat target/webgoat-*.jar /home/webgoat/webgoat.jar\n"
+                    ],
+                    [
+                        10,
+                        "\n"
+                    ],
+                    [
+                        11,
+                        "EXPOSE 8080\n"
+                    ],
+                    [
+                        12,
+                        "EXPOSE 9090\n"
+                    ],
+                    [
+                        13,
+                        "\n"
+                    ],
+                    [
+                        14,
+                        "WORKDIR /home/webgoat\n"
+                    ],
+                    [
+                        15,
+                        "ENTRYPOINT [ \"java\", \\\n"
+                    ],
+                    [
+                        16,
+                        "   \"-Duser.home=/home/webgoat\", \\\n"
+                    ],
+                    [
+                        17,
+                        "   \"-Dfile.encoding=UTF-8\", \\\n"
+                    ],
+                    [
+                        18,
+                        "   \"--add-opens\", \"java.base/java.lang=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        19,
+                        "   \"--add-opens\", \"java.base/java.util=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        20,
+                        "   \"--add-opens\", \"java.base/java.lang.reflect=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        21,
+                        "   \"--add-opens\", \"java.base/java.text=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        22,
+                        "   \"--add-opens\", \"java.desktop/java.beans=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        23,
+                        "   \"--add-opens\", \"java.desktop/java.awt.font=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        24,
+                        "   \"--add-opens\", \"java.base/sun.nio.ch=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        25,
+                        "   \"--add-opens\", \"java.base/java.io=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        26,
+                        "   \"--add-opens\", \"java.base/java.util=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        27,
+                        "   \"-Drunning.in.docker=true\", \\\n"
+                    ],
+                    [
+                        28,
+                        "   \"-Dwebgoat.host=0.0.0.0\", \\\n"
+                    ],
+                    [
+                        29,
+                        "   \"-Dwebwolf.host=0.0.0.0\", \\\n"
+                    ],
+                    [
+                        30,
+                        "   \"-Dwebgoat.port=8080\", \\\n"
+                    ],
+                    [
+                        31,
+                        "   \"-Dwebwolf.port=9090\", \\\n"
+                    ],
+                    [
+                        32,
+                        "   \"-jar\", \"webgoat.jar\" ]\n"
+                    ]
+                ],
+                "file_path": "/Dockerfile",
+                "file_abs_path": "/tmp/ws-scm/WebGoat/Dockerfile",
+                "repo_file_path": "/Dockerfile",
+                "file_line_range": [
+                    1,
+                    32
+                ],
+                "resource": "/Dockerfile.",
+                "evaluations": null,
+                "check_class": "checkov.dockerfile.checks.ExposePort22",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "guideline": "https://docs.bridgecrew.io/docs/ensure-port-22-is-not-exposed"
+            },
+            {
+                "check_id": "CKV_DOCKER_7",
+                "bc_check_id": "BC_DKR_7",
+                "check_name": "Ensure the base image uses a non latest version tag",
+                "check_result": {
+                    "result": "PASSED",
+                    "results_configuration": null
+                },
+                "code_block": [
+                    [
+                        1,
+                        "FROM docker.io/eclipse-temurin:17-jdk-focal\n"
+                    ],
+                    [
+                        2,
+                        "\n"
+                    ],
+                    [
+                        3,
+                        "RUN useradd -ms /bin/bash webgoat\n"
+                    ],
+                    [
+                        4,
+                        "RUN chgrp -R 0 /home/webgoat\n"
+                    ],
+                    [
+                        5,
+                        "RUN chmod -R g=u /home/webgoat\n"
+                    ],
+                    [
+                        6,
+                        "\n"
+                    ],
+                    [
+                        7,
+                        "USER webgoat\n"
+                    ],
+                    [
+                        8,
+                        "\n"
+                    ],
+                    [
+                        9,
+                        "COPY --chown=webgoat target/webgoat-*.jar /home/webgoat/webgoat.jar\n"
+                    ],
+                    [
+                        10,
+                        "\n"
+                    ],
+                    [
+                        11,
+                        "EXPOSE 8080\n"
+                    ],
+                    [
+                        12,
+                        "EXPOSE 9090\n"
+                    ],
+                    [
+                        13,
+                        "\n"
+                    ],
+                    [
+                        14,
+                        "WORKDIR /home/webgoat\n"
+                    ],
+                    [
+                        15,
+                        "ENTRYPOINT [ \"java\", \\\n"
+                    ],
+                    [
+                        16,
+                        "   \"-Duser.home=/home/webgoat\", \\\n"
+                    ],
+                    [
+                        17,
+                        "   \"-Dfile.encoding=UTF-8\", \\\n"
+                    ],
+                    [
+                        18,
+                        "   \"--add-opens\", \"java.base/java.lang=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        19,
+                        "   \"--add-opens\", \"java.base/java.util=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        20,
+                        "   \"--add-opens\", \"java.base/java.lang.reflect=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        21,
+                        "   \"--add-opens\", \"java.base/java.text=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        22,
+                        "   \"--add-opens\", \"java.desktop/java.beans=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        23,
+                        "   \"--add-opens\", \"java.desktop/java.awt.font=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        24,
+                        "   \"--add-opens\", \"java.base/sun.nio.ch=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        25,
+                        "   \"--add-opens\", \"java.base/java.io=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        26,
+                        "   \"--add-opens\", \"java.base/java.util=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        27,
+                        "   \"-Drunning.in.docker=true\", \\\n"
+                    ],
+                    [
+                        28,
+                        "   \"-Dwebgoat.host=0.0.0.0\", \\\n"
+                    ],
+                    [
+                        29,
+                        "   \"-Dwebwolf.host=0.0.0.0\", \\\n"
+                    ],
+                    [
+                        30,
+                        "   \"-Dwebgoat.port=8080\", \\\n"
+                    ],
+                    [
+                        31,
+                        "   \"-Dwebwolf.port=9090\", \\\n"
+                    ],
+                    [
+                        32,
+                        "   \"-jar\", \"webgoat.jar\" ]\n"
+                    ]
+                ],
+                "file_path": "/Dockerfile",
+                "file_abs_path": "/tmp/ws-scm/WebGoat/Dockerfile",
+                "repo_file_path": "/Dockerfile",
+                "file_line_range": [
+                    1,
+                    32
+                ],
+                "resource": "/Dockerfile.",
+                "evaluations": null,
+                "check_class": "checkov.dockerfile.checks.ReferenceLatestTag",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "guideline": "https://docs.bridgecrew.io/docs/ensure-the-base-image-uses-a-non-latest-version-tag"
+            },
+            {
+                "check_id": "CKV_DOCKER_8",
+                "bc_check_id": "BC_DKR_8",
+                "check_name": "Ensure the last USER is not root",
+                "check_result": {
+                    "result": "PASSED",
+                    "results_configuration": {
+                        "instruction": "USER",
+                        "startline": 6,
+                        "endline": 6,
+                        "content": "USER webgoat\n",
+                        "value": "webgoat"
+                    }
+                },
+                "code_block": [
+                    [
+                        7,
+                        "USER webgoat\n"
+                    ]
+                ],
+                "file_path": "/Dockerfile",
+                "file_abs_path": "/tmp/ws-scm/WebGoat/Dockerfile",
+                "repo_file_path": "/Dockerfile",
+                "file_line_range": [
+                    7,
+                    7
+                ],
+                "resource": "/Dockerfile.USER",
+                "evaluations": null,
+                "check_class": "checkov.dockerfile.checks.RootUser",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "guideline": "https://docs.bridgecrew.io/docs/ensure-the-last-user-is-not-root"
+            },
+            {
+                "check_id": "CKV_DOCKER_5",
+                "bc_check_id": "BC_DKR_4",
+                "check_name": "Ensure update instructions are not use alone in the Dockerfile",
+                "check_result": {
+                    "result": "PASSED",
+                    "results_configuration": null
+                },
+                "code_block": [
+                    [
+                        1,
+                        "FROM docker.io/eclipse-temurin:17-jdk-focal\n"
+                    ],
+                    [
+                        2,
+                        "\n"
+                    ],
+                    [
+                        3,
+                        "RUN useradd -ms /bin/bash webgoat\n"
+                    ],
+                    [
+                        4,
+                        "RUN chgrp -R 0 /home/webgoat\n"
+                    ],
+                    [
+                        5,
+                        "RUN chmod -R g=u /home/webgoat\n"
+                    ],
+                    [
+                        6,
+                        "\n"
+                    ],
+                    [
+                        7,
+                        "USER webgoat\n"
+                    ],
+                    [
+                        8,
+                        "\n"
+                    ],
+                    [
+                        9,
+                        "COPY --chown=webgoat target/webgoat-*.jar /home/webgoat/webgoat.jar\n"
+                    ],
+                    [
+                        10,
+                        "\n"
+                    ],
+                    [
+                        11,
+                        "EXPOSE 8080\n"
+                    ],
+                    [
+                        12,
+                        "EXPOSE 9090\n"
+                    ],
+                    [
+                        13,
+                        "\n"
+                    ],
+                    [
+                        14,
+                        "WORKDIR /home/webgoat\n"
+                    ],
+                    [
+                        15,
+                        "ENTRYPOINT [ \"java\", \\\n"
+                    ],
+                    [
+                        16,
+                        "   \"-Duser.home=/home/webgoat\", \\\n"
+                    ],
+                    [
+                        17,
+                        "   \"-Dfile.encoding=UTF-8\", \\\n"
+                    ],
+                    [
+                        18,
+                        "   \"--add-opens\", \"java.base/java.lang=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        19,
+                        "   \"--add-opens\", \"java.base/java.util=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        20,
+                        "   \"--add-opens\", \"java.base/java.lang.reflect=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        21,
+                        "   \"--add-opens\", \"java.base/java.text=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        22,
+                        "   \"--add-opens\", \"java.desktop/java.beans=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        23,
+                        "   \"--add-opens\", \"java.desktop/java.awt.font=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        24,
+                        "   \"--add-opens\", \"java.base/sun.nio.ch=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        25,
+                        "   \"--add-opens\", \"java.base/java.io=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        26,
+                        "   \"--add-opens\", \"java.base/java.util=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        27,
+                        "   \"-Drunning.in.docker=true\", \\\n"
+                    ],
+                    [
+                        28,
+                        "   \"-Dwebgoat.host=0.0.0.0\", \\\n"
+                    ],
+                    [
+                        29,
+                        "   \"-Dwebwolf.host=0.0.0.0\", \\\n"
+                    ],
+                    [
+                        30,
+                        "   \"-Dwebgoat.port=8080\", \\\n"
+                    ],
+                    [
+                        31,
+                        "   \"-Dwebwolf.port=9090\", \\\n"
+                    ],
+                    [
+                        32,
+                        "   \"-jar\", \"webgoat.jar\" ]\n"
+                    ]
+                ],
+                "file_path": "/Dockerfile",
+                "file_abs_path": "/tmp/ws-scm/WebGoat/Dockerfile",
+                "repo_file_path": "/Dockerfile",
+                "file_line_range": [
+                    1,
+                    32
+                ],
+                "resource": "/Dockerfile.",
+                "evaluations": null,
+                "check_class": "checkov.dockerfile.checks.UpdateNotAlone",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "guideline": "https://docs.bridgecrew.io/docs/ensure-update-instructions-are-not-used-alone-in-the-dockerfile"
+            },
+            {
+                "check_id": "CKV_DOCKER_3",
+                "bc_check_id": "BC_DKR_3",
+                "check_name": "Ensure that a user for the container has been created",
+                "check_result": {
+                    "result": "PASSED",
+                    "results_configuration": {
+                        "instruction": "USER",
+                        "startline": 6,
+                        "endline": 6,
+                        "content": "USER webgoat\n",
+                        "value": "webgoat"
+                    }
+                },
+                "code_block": [
+                    [
+                        7,
+                        "USER webgoat\n"
+                    ]
+                ],
+                "file_path": "/Dockerfile",
+                "file_abs_path": "/tmp/ws-scm/WebGoat/Dockerfile",
+                "repo_file_path": "/Dockerfile",
+                "file_line_range": [
+                    7,
+                    7
+                ],
+                "resource": "/Dockerfile.USER",
+                "evaluations": null,
+                "check_class": "checkov.dockerfile.checks.UserExists",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "guideline": "https://docs.bridgecrew.io/docs/ensure-that-a-user-for-the-container-has-been-created"
+            }
+        ],
+        "failed_checks": [
+            {
+                "check_id": "CKV_DOCKER_2",
+                "bc_check_id": "BC_DKR_2",
+                "check_name": "Ensure that HEALTHCHECK instructions have been added to container images",
+                "check_result": {
+                    "result": "FAILED",
+                    "results_configuration": null
+                },
+                "code_block": [
+                    [
+                        1,
+                        "FROM docker.io/eclipse-temurin:17-jdk-focal\n"
+                    ],
+                    [
+                        2,
+                        "\n"
+                    ],
+                    [
+                        3,
+                        "RUN useradd -ms /bin/bash webgoat\n"
+                    ],
+                    [
+                        4,
+                        "RUN chgrp -R 0 /home/webgoat\n"
+                    ],
+                    [
+                        5,
+                        "RUN chmod -R g=u /home/webgoat\n"
+                    ],
+                    [
+                        6,
+                        "\n"
+                    ],
+                    [
+                        7,
+                        "USER webgoat\n"
+                    ],
+                    [
+                        8,
+                        "\n"
+                    ],
+                    [
+                        9,
+                        "COPY --chown=webgoat target/webgoat-*.jar /home/webgoat/webgoat.jar\n"
+                    ],
+                    [
+                        10,
+                        "\n"
+                    ],
+                    [
+                        11,
+                        "EXPOSE 8080\n"
+                    ],
+                    [
+                        12,
+                        "EXPOSE 9090\n"
+                    ],
+                    [
+                        13,
+                        "\n"
+                    ],
+                    [
+                        14,
+                        "WORKDIR /home/webgoat\n"
+                    ],
+                    [
+                        15,
+                        "ENTRYPOINT [ \"java\", \\\n"
+                    ],
+                    [
+                        16,
+                        "   \"-Duser.home=/home/webgoat\", \\\n"
+                    ],
+                    [
+                        17,
+                        "   \"-Dfile.encoding=UTF-8\", \\\n"
+                    ],
+                    [
+                        18,
+                        "   \"--add-opens\", \"java.base/java.lang=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        19,
+                        "   \"--add-opens\", \"java.base/java.util=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        20,
+                        "   \"--add-opens\", \"java.base/java.lang.reflect=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        21,
+                        "   \"--add-opens\", \"java.base/java.text=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        22,
+                        "   \"--add-opens\", \"java.desktop/java.beans=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        23,
+                        "   \"--add-opens\", \"java.desktop/java.awt.font=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        24,
+                        "   \"--add-opens\", \"java.base/sun.nio.ch=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        25,
+                        "   \"--add-opens\", \"java.base/java.io=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        26,
+                        "   \"--add-opens\", \"java.base/java.util=ALL-UNNAMED\", \\\n"
+                    ],
+                    [
+                        27,
+                        "   \"-Drunning.in.docker=true\", \\\n"
+                    ],
+                    [
+                        28,
+                        "   \"-Dwebgoat.host=0.0.0.0\", \\\n"
+                    ],
+                    [
+                        29,
+                        "   \"-Dwebwolf.host=0.0.0.0\", \\\n"
+                    ],
+                    [
+                        30,
+                        "   \"-Dwebgoat.port=8080\", \\\n"
+                    ],
+                    [
+                        31,
+                        "   \"-Dwebwolf.port=9090\", \\\n"
+                    ],
+                    [
+                        32,
+                        "   \"-jar\", \"webgoat.jar\" ]\n"
+                    ]
+                ],
+                "file_path": "/Dockerfile",
+                "file_abs_path": "/tmp/ws-scm/WebGoat/Dockerfile",
+                "repo_file_path": "/Dockerfile",
+                "file_line_range": [
+                    1,
+                    32
+                ],
+                "resource": "/Dockerfile.",
+                "evaluations": null,
+                "check_class": "checkov.dockerfile.checks.HealthcheckExists",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": null,
+                "guideline": "https://docs.bridgecrew.io/docs/ensure-that-healthcheck-instructions-have-been-added-to-container-images"
+            }
+        ],
+        "skipped_checks": [],
+        "parsing_errors": []
+    },
+    "summary": {
+        "passed": 5,
+        "failed": 1,
+        "skipped": 0,
+        "parsing_errors": 0,
+        "resource_count": 1,
+        "checkov_version": "2.0.707"
+    },
+    "url": "Add an api key '--bc-api-key <api-key>' to see more detailed insights via https://bridgecrew.cloud"
+}
